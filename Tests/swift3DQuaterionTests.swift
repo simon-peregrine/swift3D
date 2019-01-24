@@ -13,7 +13,7 @@ class swift_3D_testQuaterionFloat: XCTestCase {
     
     func testQuaternionEmptyConstructor() {
         let q = quat()
-        XCTAssert(glm_to_swift_quat.quatInitWithResult(float4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withResult: float4(q)))
     }
     
     func testQuaternionValuesConstructor() {
@@ -22,21 +22,21 @@ class swift_3D_testQuaterionFloat: XCTestCase {
         let y: Float = 1.7
         let z: Float = 2.5
         let q = quat(w, x, y, z)
-        XCTAssert(glm_to_swift_quat.quatInitWithValuesW(w, valueX: x, valueY: y, valueZ: z, andResult: float4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withValuesW: w, valueX: x, valueY: y, valueZ: z, andResult: float4(q)))
     }
     
     func testQuaternionSandV3() {
         let s: Float = 0.5
         let v = float3(0.2, 0.5, 2.2)
         let q = quat(w: s, v: v)
-        XCTAssert(glm_to_swift_quat.quatInitWithFloat(s, andVec3: v, andResult: float4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(with: s, andVec3: v, andResult: float4(q)))
     }
     
     func testQuaternionInitAngleAxis() {
-        let angle: Float = Float(M_PI_4)
+        let angle: Float = Float(.pi / 4.0)
         let v = normalize(float3(0.2, 0.5, 2.2))
         let q = quat(angle: angle, axis: v)
-        XCTAssert(glm_to_swift_quat.quatInitWithAngle(angle, andAxis: v, andResult: float4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withAngle: angle, andAxis: v, andResult: float4(q)))
     }
     
     func testQuaternionQuaternionConstructor() {
@@ -46,14 +46,14 @@ class swift_3D_testQuaterionFloat: XCTestCase {
         let z: Float = 2.5
         let q = quat(w, x, y, z)
         let q2 = quat(q)
-        XCTAssert(glm_to_swift_quat.quatInitWithQuatWithInitValuesW(w, valueX: x, valueY: y, valueZ: z, andResult: float4(q2)))
+        XCTAssert(glm_to_swift_quat.quatInit(withValuesW: w, valueX: x, valueY: y, valueZ: z, andResult: float4(q2)))
     }
     
     func testQuaternionInitEulerAngles() {
         let angle = float3(-2.5, 33.213, 12.2)
         let q = quat(angle)
         
-        XCTAssert(glm_to_swift_quat.quatInitWithEulerAngles(angle, andResult: float4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withEulerAngles: angle, andResult: float4(q)))
     }
     
     func testQuaternionNormalizedAxis() {
@@ -61,21 +61,21 @@ class swift_3D_testQuaterionFloat: XCTestCase {
         let axis2 = normalize(float3(13.4, -2.6, 0.003))
         
         let q = quat(axis1, axis2)
-        XCTAssert(glm_to_swift_quat.quatInitWithNormalizedAxis(axis1, withAxis: axis2, andResult: float4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withNormalizedAxis: axis1, withAxis: axis2, andResult: float4(q)))
     }
     
     func testQuaternionMatrix3x3() {
         let m = float3x3([float3(3.3, -3, 2.8), float3(1.6, -12.7, 3.8), float3(6.123, 9.99, 0.0003)])
         let q = quat(m)
         let m2 = matrix_float3x3(columns: (m[0], m[1], m[2]))
-        XCTAssert(glm_to_swift_quat.quatInitWithMat3x3(m2, andResult: float4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withMat3x3: m2, andResult: float4(q)))
     }
     
     func testQuaternionMatrix4x4() {
         let m = float4x4([float4(3.3, -3, 2.8, 5.64532), float4(1.6, -12.7, 3.8, -3.45), float4(6.123, 9.99, 0.0003, 222.4322), float4(-11, -22, 345.23, 12.1)])
         let q = quat(m)
         let m2 = matrix_float4x4(columns: (m[0], m[1], m[2], m[3]))
-        XCTAssert(glm_to_swift_quat.quatInitWithMat4x4(m2, andResult: float4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withMat4x4: m2, andResult: float4(q)))
     }
     
     func testQuaternionPlus() {
@@ -167,7 +167,7 @@ class swift_3D_testQuaterionFloat: XCTestCase {
     
     func testQuaternionInverse() {
         let q = quat(0.5, 2.3, 5.6, -2.01)
-        XCTAssert(glm_to_swift_quat.quatInverse(float4(q), andResult: float4(inverse(q))))
+        XCTAssert(glm_to_swift_quat.quatInverse(float4(q), andResult: float4(swift3D.inverse(q))))
     }
     
     func testQuaterionNormalization() {
@@ -239,17 +239,17 @@ class swift_3D_testQuaterionFloat: XCTestCase {
     func testQuaternionRotate() {
         let q1 = quat()
         let axis1 = float3(0, 0, 1)
-        let angle1 = Float(M_PI_2)
+        let angle1 = Float.pi / 2.0
         XCTAssert(glm_to_swift_quat.quatRotate(float4(q1), withAngle: angle1, withAxis: axis1, andResult: float4(rotate(q1, angle: angle1, axis: axis1))))
         
         let q2 = normalize(quat(0.5, -0.5, -3, 6))
         let axis2 = float3(-0.33, 5.5, -1)
-        let angle2 = Float(M_PI)
+        let angle2 = Float.pi
         XCTAssert(glm_to_swift_quat.quatRotate(float4(q2), withAngle: angle2, withAxis: axis2, andResult: float4(rotate(q2, angle: angle2, axis: axis2))))
         
         let q3 = normalize(quat(0.5, 0.5, 3, 6))
         let axis3 = normalize(float3(-0.33, 0.5, 1))
-        let angle3 = Float(M_PI_4)
+        let angle3 = Float.pi / 4.0
         XCTAssert(glm_to_swift_quat.quatRotate(float4(q3), withAngle: angle3, withAxis: axis3, andResult: float4(rotate(q3, angle: angle3, axis: axis3))))
     }
     
@@ -287,7 +287,7 @@ class swift_3D_testQuaterionDouble: XCTestCase {
     
     func testQuaternionEmptyConstructor() {
         let q = dquat()
-        XCTAssert(glm_to_swift_quat.quatInitWithResultDouble(double4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withResultDouble: double4(q)))
     }
     
     func testQuaternionValuesConstructor() {
@@ -296,21 +296,21 @@ class swift_3D_testQuaterionDouble: XCTestCase {
         let y: Double = 1.7
         let z: Double = 2.5
         let q = dquat(w, x, y, z)
-        XCTAssert(glm_to_swift_quat.quatInitWithValuesWDouble(w, valueX: x, valueY: y, valueZ: z, andResult: double4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withValuesWDouble: w, valueX: x, valueY: y, valueZ: z, andResult: double4(q)))
     }
     
     func testQuaternionSandV3() {
         let s: Double = 0.5
         let v = double3(0.2, 0.5, 2.2)
         let q = dquat(w: s, v: v)
-        XCTAssert(glm_to_swift_quat.quatInitWithDouble(s, andVec3: v, andResult: double4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(with: s, andVec3: v, andResult: double4(q)))
     }
     
     func testQuaternionInitAngleAxis() {
-        let angle: Double = Double(M_PI_4)
+        let angle: Double = Double(.pi / 4.0)
         let v = normalize(double3(0.2, 0.5, 2.2))
         let q = dquat(angle: angle, axis: v)
-        XCTAssert(glm_to_swift_quat.quatInitWithAngleDouble(angle, andAxis: v, andResult: double4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withAngleDouble: angle, andAxis: v, andResult: double4(q)))
     }
     
     func testQuaternionQuaternionConstructor() {
@@ -320,14 +320,14 @@ class swift_3D_testQuaterionDouble: XCTestCase {
         let z: Double = 2.5
         let q = dquat(w, x, y, z)
         let q2 = dquat(q)
-        XCTAssert(glm_to_swift_quat.quatInitWithQuatWithInitValuesWDouble(w, valueX: x, valueY: y, valueZ: z, andResult: double4(q2)))
+        XCTAssert(glm_to_swift_quat.quatInit(withValuesWDouble: w, valueX: x, valueY: y, valueZ: z, andResult: double4(q2)))
     }
     
     func testQuaternionInitEulerAngles() {
         let angle = double3(-2.5, 33.213, 12.2)
         let q = dquat(angle)
         
-        XCTAssert(glm_to_swift_quat.quatInitWithEulerAnglesDouble(angle, andResult: double4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withEulerAnglesDouble: angle, andResult: double4(q)))
     }
     
     func testQuaternionNormalizedAxis() {
@@ -335,21 +335,21 @@ class swift_3D_testQuaterionDouble: XCTestCase {
         let axis2 = normalize(double3(13.4, -2.6, 0.003))
         
         let q = dquat(axis1, axis2)
-        XCTAssert(glm_to_swift_quat.quatInitWithNormalizedAxisDouble(axis1, withAxis: axis2, andResult: double4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withNormalizedAxisDouble: axis1, withAxis: axis2, andResult: double4(q)))
     }
     
     func testQuaternionMatrix3x3() {
         let m = double3x3([double3(3.3, -3, 2.8), double3(1.6, -12.7, 3.8), double3(6.123, 9.99, 0.0003)])
         let q = dquat(m)
         let m2 = matrix_double3x3(columns: (m[0], m[1], m[2]))
-        XCTAssert(glm_to_swift_quat.quatInitWithMat3x3Double(m2, andResult: double4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withMat3x3Double: m2, andResult: double4(q)))
     }
     
     func testQuaternionMatrix4x4() {
         let m = double4x4([double4(3.3, -3, 2.8, 5.64532), double4(1.6, -12.7, 3.8, -3.45), double4(6.123, 9.99, 0.0003, 222.4322), double4(-11, -22, 345.23, 12.1)])
         let q = dquat(m)
         let m2 = matrix_double4x4(columns: (m[0], m[1], m[2], m[3]))
-        XCTAssert(glm_to_swift_quat.quatInitWithMat4x4Double(m2, andResult: double4(q)))
+        XCTAssert(glm_to_swift_quat.quatInit(withMat4x4Double: m2, andResult: double4(q)))
     }
     
     func testQuaternionPlus() {
@@ -441,7 +441,7 @@ class swift_3D_testQuaterionDouble: XCTestCase {
     
     func testQuaternionInverse() {
         let q = dquat(0.5, 2.3, 5.6, -2.01)
-        XCTAssert(glm_to_swift_quat.quatInverseDouble(double4(q), andResult: double4(inverse(q))))
+        XCTAssert(glm_to_swift_quat.quatInverseDouble(double4(q), andResult: double4(swift3D.inverse(q))))
     }
     
     func testQuaterionNormalization() {
@@ -513,17 +513,17 @@ class swift_3D_testQuaterionDouble: XCTestCase {
     func testQuaternionRotate() {
         let q1 = dquat()
         let axis1 = double3(0, 0, 1)
-        let angle1 = Double(M_PI_2)
+        let angle1 = Double.pi / 2.0
         XCTAssert(glm_to_swift_quat.quatRotateDouble(double4(q1), withAngle: angle1, withAxis: axis1, andResult: double4(rotate(q1, angle: angle1, axis: axis1))))
         
         let q2 = normalize(dquat(0.5, -0.5, -3, 6))
         let axis2 = double3(-0.33, 5.5, -1)
-        let angle2 = Double(M_PI)
+        let angle2 = Double.pi
         XCTAssert(glm_to_swift_quat.quatRotateDouble(double4(q2), withAngle: angle2, withAxis: axis2, andResult: double4(rotate(q2, angle: angle2, axis: axis2))))
         
         let q3 = normalize(dquat(0.5, 0.5, 3, 6))
         let axis3 = normalize(double3(-0.33, 0.5, 1))
-        let angle3 = Double(M_PI_4)
+        let angle3 = Double(.pi / 4.0)
         XCTAssert(glm_to_swift_quat.quatRotateDouble(double4(q3), withAngle: angle3, withAxis: axis3, andResult: double4(rotate(q3, angle: angle3, axis: axis3))))
     }
     

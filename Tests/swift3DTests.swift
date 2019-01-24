@@ -658,32 +658,32 @@ class swift_3D_testDeterminant: XCTestCase {
     
     func testDeterminantFloat2x2() {
         let M = matrix_float2x2(columns: (vector_float2(1,2), vector_float2(-2, 3)))
-        XCTAssert(glm_to_swift.determinant(M, andResultFloat2x2: float2x2(M).determinant))
+        XCTAssert(glm_to_swift.determinant(M, andResultFloat2x2: M.determinant))
     }
     
     func testDeterminantFloat3x3() {
         let M = matrix_float3x3(columns: (vector_float3(1,2,-3), vector_float3(-2, 3, 0), vector_float3(3, -1, 2)))
-        XCTAssert(glm_to_swift.determinant(M, andResultFloat3x3: float3x3(M).determinant))
+        XCTAssert(glm_to_swift.determinant(M, andResultFloat3x3: M.determinant))
     }
     
     func testDeterminantFloat4x4() {
         let M = matrix_float4x4(columns: (vector_float4(1,2,-3, 5), vector_float4(-2, 3, 0, 1), vector_float4(3, -1, 2, -6), vector_float4(0, -1, -2, 1)))
-        XCTAssert(glm_to_swift.determinant(M, andResultFloat4x4: float4x4(M).determinant))
+        XCTAssert(glm_to_swift.determinant(M, andResultFloat4x4: M.determinant))
     }
     
     func testDeterminantDouble2x2() {
         let M = matrix_double2x2(columns: (vector_double2(1,2), vector_double2(-2, 3)))
-        XCTAssert(glm_to_swift.determinant(M, andResultDouble2x2: double2x2(M).determinant))
+        XCTAssert(glm_to_swift.determinant(M, andResultDouble2x2: M.determinant))
     }
     
     func testDeterminantDouble3x3() {
         let M = matrix_double3x3(columns: (vector_double3(1,2,-3), vector_double3(-2, 3, 0), vector_double3(3, -1, 2)))
-        XCTAssert(glm_to_swift.determinant(M, andResultDouble3x3: double3x3(M).determinant))
+        XCTAssert(glm_to_swift.determinant(M, andResultDouble3x3: M.determinant))
     }
     
     func testDeterminantDouble4x4() {
         let M = matrix_double4x4(columns: (vector_double4(1,2,-3, 5), vector_double4(-2, 3, 0, 1), vector_double4(3, -1, 2, -6), vector_double4(0, -1, -2, 1)))
-        XCTAssert(glm_to_swift.determinant(M, andResultDouble4x4: double4x4(M).determinant))
+        XCTAssert(glm_to_swift.determinant(M, andResultDouble4x4: M.determinant))
     }
 }
 
@@ -691,42 +691,42 @@ class swift_3D_testRadians: XCTestCase {
     
     func testRadiansFloat() {
         let degrees = Float(180.0)
-        XCTAssert(glm_to_swift.radiansFromDegrees(degrees, floatWithResult: radians(degrees)))
+        XCTAssert(glm_to_swift.radians(fromDegrees: degrees, floatWithResult: radians(degrees)))
     }
     
     func testRadiansFloat2() {
         let degrees = float2(180.0, -90.0)
-        XCTAssert(glm_to_swift.radiansFromDegrees(degrees, float2WithResult: radians(degrees)))
+        XCTAssert(glm_to_swift.radians(fromDegrees: degrees, float2WithResult: radians(degrees)))
     }
     
     func testRadiansFloat3() {
         let degrees = float3(180.0, -90.0, 0.0)
-        XCTAssert(glm_to_swift.radiansFromDegrees(degrees, float3WithResult: radians(degrees)))
+        XCTAssert(glm_to_swift.radians(fromDegrees: degrees, float3WithResult: radians(degrees)))
     }
     
     func testRadiansFloat4() {
         let degrees = float4(180.0, -90.0, -4.5, 200.0)
-        XCTAssert(glm_to_swift.radiansFromDegrees(degrees, float4WithResult: radians(degrees)))
+        XCTAssert(glm_to_swift.radians(fromDegrees: degrees, float4WithResult: radians(degrees)))
     }
     
     func testRadiansDouble() {
         let degrees = Double(180.0)
-        XCTAssert(glm_to_swift.radiansFromDegrees(degrees, doubleWithResult: radians(degrees)))
+        XCTAssert(glm_to_swift.radians(fromDegrees: degrees, doubleWithResult: radians(degrees)))
     }
     
     func testRadiansDouble2() {
         let degrees = double2(180.0, -90.0)
-        XCTAssert(glm_to_swift.radiansFromDegrees(degrees, double2WithResult: radians(degrees)))
+        XCTAssert(glm_to_swift.radians(fromDegrees: degrees, double2WithResult: radians(degrees)))
     }
     
     func testRadiansDouble3() {
         let degrees = double3(180.0, -90.0, 0.0)
-        XCTAssert(glm_to_swift.radiansFromDegrees(degrees, double3WithResult: radians(degrees)))
+        XCTAssert(glm_to_swift.radians(fromDegrees: degrees, double3WithResult: radians(degrees)))
     }
     
     func testRadiansDouble4() {
         let degrees = double4(180.0, -90.0, -4.5, 200.0)
-        XCTAssert(glm_to_swift.radiansFromDegrees(degrees, double4WithResult: radians(degrees)))
+        XCTAssert(glm_to_swift.radians(fromDegrees: degrees, double4WithResult: radians(degrees)))
     }
 }
 
@@ -734,42 +734,42 @@ class swift_3D_testDegrees: XCTestCase {
     
     func testDegreesFloat() {
         let radians = Float(180.0)
-        XCTAssert(glm_to_swift.degreesFromRadians(radians, floatWithResult: degrees(radians)))
+        XCTAssert(glm_to_swift.degrees(fromRadians: radians, floatWithResult: degrees(radians)))
     }
     
     func testDegreesFloat2() {
         let radians = float2(180.0, -90.0)
-        XCTAssert(glm_to_swift.degreesFromRadians(radians, float2WithResult: degrees(radians)))
+        XCTAssert(glm_to_swift.degrees(fromRadians: radians, float2WithResult: degrees(radians)))
     }
     
     func testDegreesFloat3() {
         let radians = float3(180.0, -90.0, 0.0)
-        XCTAssert(glm_to_swift.degreesFromRadians(radians, float3WithResult: degrees(radians)))
+        XCTAssert(glm_to_swift.degrees(fromRadians: radians, float3WithResult: degrees(radians)))
     }
     
     func testDegreesFloat4() {
         let radians = float4(180.0, -90.0, -4.5, 200.0)
-        XCTAssert(glm_to_swift.degreesFromRadians(radians, float4WithResult: degrees(radians)))
+        XCTAssert(glm_to_swift.degrees(fromRadians: radians, float4WithResult: degrees(radians)))
     }
     
     func testDegreesDouble() {
         let radians = Double(180.0)
-        XCTAssert(glm_to_swift.degreesFromRadians(radians, doubleWithResult: degrees(radians)))
+        XCTAssert(glm_to_swift.degrees(fromRadians: radians, doubleWithResult: degrees(radians)))
     }
     
     func testDegreesDouble2() {
         let radians = double2(180.0, -90.0)
-        XCTAssert(glm_to_swift.degreesFromRadians(radians, double2WithResult: degrees(radians)))
+        XCTAssert(glm_to_swift.degrees(fromRadians: radians, double2WithResult: degrees(radians)))
     }
     
     func testDegreesDouble3() {
         let radians = double3(180.0, -90.0, 0.0)
-        XCTAssert(glm_to_swift.degreesFromRadians(radians, double3WithResult: degrees(radians)))
+        XCTAssert(glm_to_swift.degrees(fromRadians: radians, double3WithResult: degrees(radians)))
     }
     
     func testDegreesDouble4() {
         let radians = double4(180.0, -90.0, -4.5, 200.0)
-        XCTAssert(glm_to_swift.degreesFromRadians(radians, double4WithResult: degrees(radians)))
+        XCTAssert(glm_to_swift.degrees(fromRadians: radians, double4WithResult: degrees(radians)))
     }
 }
 
@@ -778,7 +778,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     func testTranslateFloat() {
         let M = matrix_float4x4(columns: (vector_float4(1,2,-3, 5), vector_float4(-2, 3, 0, 1), vector_float4(3, -1, 2, -6), vector_float4(0, -1, -2, 1)))
         let V = float3(2, -1, 3)
-        let result = translate(float4x4(M), v: V)
+        let result = translate(M, v: V)
         let result2 = matrix_float4x4(columns: (result[0], result[1], result[2], result[3]))
         XCTAssert(glm_to_swift.translateFloat(M, withVector: V, withResult: result2))
     }
@@ -786,16 +786,16 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     func testTranslateDouble() {
         let M = matrix_double4x4(columns: (vector_double4(1,2,-3, 5), vector_double4(-2, 3, 0, 1), vector_double4(3, -1, 2, -6), vector_double4(0, -1, -2, 1)))
         let V = double3(2, -1, 3)
-        let result = translate(double4x4(M), v: V)
+        let result = translate(M, v: V)
         let result2 = matrix_double4x4(columns: (result[0], result[1], result[2], result[3]))
         XCTAssert(glm_to_swift.translateDouble(M, withVector: V, withResult: result2))
     }
     
     func testRotateFloat() {
         let M = matrix_float4x4(columns: (vector_float4(1,2,-3, 5), vector_float4(-2, 3, 0, 1), vector_float4(3, -1, 2, -6), vector_float4(0, -1, -2, 1)))
-        let angle = Float(M_PI_4)
+        let angle = Float(.pi / 4.0)
         let axis = float3(2, 2, 1)
-        let result = rotate(float4x4(M), angle: angle, axis: axis)
+        let result = rotate(M, angle: angle, axis: axis)
         let result2 = matrix_float4x4(columns: (result[0], result[1], result[2], result[3]))
         
         XCTAssert(glm_to_swift.rotateFloat(M, withAngle: angle, withAxis: axis, andResult: result2))
@@ -803,9 +803,9 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     
     func testRotateDouble() {
         let M = matrix_double4x4(columns: (vector_double4(1,2,-3, 5), vector_double4(-2, 3, 0, 1), vector_double4(3, -1, 2, -6), vector_double4(0, -1, -2, 1)))
-        let angle = Double(M_PI_4)
+        let angle = Double(.pi / 4.0)
         let axis = double3(2, 2, 1)
-        let result = rotate(double4x4(M), angle: angle, axis: axis)
+        let result = rotate(M, angle: angle, axis: axis)
         let result2 = matrix_double4x4(columns: (result[0], result[1], result[2], result[3]))
         
         XCTAssert(glm_to_swift.rotateDouble(M, withAngle: angle, withAxis: axis, andResult: result2))
@@ -814,7 +814,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     func testScaleFloat() {
         let M = matrix_float4x4(columns: (vector_float4(1,2,-3, 5), vector_float4(-2, 3, 0, 1), vector_float4(3, -1, 2, -6), vector_float4(0, -1, -2, 1)))
         let v = float3(3, -2, 1)
-        let result = scale(float4x4(M), v: v)
+        let result = scale(M, v: v)
         let result2 = matrix_float4x4(columns: (result[0], result[1], result[2], result[3]))
 
         XCTAssert(glm_to_swift.scaleFloat(M, withVector: v, andResult: result2))
@@ -823,7 +823,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     func testScaleDouble() {
         let M = matrix_double4x4(columns: (vector_double4(1,2,-3, 5), vector_double4(-2, 3, 0, 1), vector_double4(3, -1, 2, -6), vector_double4(0, -1, -2, 1)))
         let v = double3(3, -2, 1)
-        let result = scale(double4x4(M), v: v)
+        let result = scale(M, v: v)
         let result2 = matrix_double4x4(columns: (result[0], result[1], result[2], result[3]))
         
         XCTAssert(glm_to_swift.scaleDouble(M, withVector: v, andResult: result2))
@@ -904,7 +904,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     }
     
     func testPerspectiveFloat() {
-        let fovy = Float(M_PI_4)
+        let fovy = Float(.pi / 4.0)
         let aspect = Float(16)/Float(9)
         let zNear = Float(0.1)
         let zFar = Float(100)
@@ -915,7 +915,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     }
     
     func testPerspectiveDouble() {
-        let fovy = Double(M_PI_4)
+        let fovy = Double(.pi / 4.0)
         let aspect = Double(16)/Double(9)
         let zNear = Double(0.1)
         let zFar = Double(100)
@@ -926,7 +926,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     }
     
     func testPerspectiveFovFloat() {
-        let fovy = Float(M_PI_4)
+        let fovy = Float(.pi / 4.0)
         let width = Float(1024)
         let height = Float(768)
         let zNear = Float(0.1)
@@ -938,7 +938,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     }
     
     func testPerspectiveFovDouble() {
-        let fovy = Double(M_PI_4)
+        let fovy = Double(.pi / 4.0)
         let width = Double(1024)
         let height = Double(768)
         let zNear = Double(0.1)
@@ -950,7 +950,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     }
     
     func testInfinitePerspectiveFloat() {
-        let fovy = Float(M_PI_4)
+        let fovy = Float(.pi / 4.0)
         let aspect = Float(16)/Float(9)
         let zNear = Float(0.1)
         let result = infinitePerspective(fovy, aspect: aspect, zNear: zNear)
@@ -960,7 +960,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
     }
     
     func testInfinitePerspectiveDouble() {
-        let fovy = Double(M_PI_4)
+        let fovy = Double(.pi / 4.0)
         let aspect = Double(16)/Double(9)
         let zNear = Double(0.1)
         let result = infinitePerspective(fovy, aspect: aspect, zNear: zNear)
@@ -975,7 +975,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
         let up = float3(0,0,1)
         let result = lookAt(eye, center: center, up: up)
         let result2 = matrix_float4x4(columns: (result[0], result[1], result[2], result[3]))
-        XCTAssert(glm_to_swift.lookAtFloat(eye, withCenter: center, withUp: up, andResult: result2))
+        XCTAssert(glm_to_swift.look(atFloat: eye, withCenter: center, withUp: up, andResult: result2))
     }
     
     func testLookAtDouble() {
@@ -984,7 +984,7 @@ class swift_3D_testMatrixTransforms: XCTestCase {
         let up = double3(0,0,1)
         let result = lookAt(eye, center: center, up: up)
         let result2 = matrix_double4x4(columns: (result[0], result[1], result[2], result[3]))
-        XCTAssert(glm_to_swift.lookAtDouble(eye, withCenter: center, withUp: up, andResult: result2))
+        XCTAssert(glm_to_swift.look(atDouble: eye, withCenter: center, withUp: up, andResult: result2))
     }
 }
 

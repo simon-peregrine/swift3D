@@ -10,8 +10,7 @@ import Foundation
 import simd
 
 /// Builds a translation 4 * 4 matrix created from a vector of 3 components.
-@warn_unused_result
-public func translate(m: float4x4, v: float3) -> float4x4 {
+public func translate(_ m: float4x4, v: float3) -> float4x4 {
     var result = m
     let vv = float4(v.x, v.y, v.z, 1)
     result[3] = m * vv
@@ -19,8 +18,7 @@ public func translate(m: float4x4, v: float3) -> float4x4 {
 }
 
 /// Builds a translation 4 * 4 matrix created from a vector of 3 components.
-@warn_unused_result
-public func translate(m: double4x4, v: double3) -> double4x4 {
+public func translate(_ m: double4x4, v: double3) -> double4x4 {
     var result = m
     let vv = double4(v.x, v.y, v.z, 1)
     result[3] = m * vv
@@ -28,8 +26,7 @@ public func translate(m: double4x4, v: double3) -> double4x4 {
 }
 
 /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle.
-@warn_unused_result
-public func rotate(m: float4x4, angle: Float, axis: float3) -> float4x4 {
+public func rotate(_ m: float4x4, angle: Float, axis: float3) -> float4x4 {
 
     let a = angle
     let c = cos(a)
@@ -60,8 +57,7 @@ public func rotate(m: float4x4, angle: Float, axis: float3) -> float4x4 {
 }
 
 /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle.
-@warn_unused_result
-public func rotate(m: double4x4, angle: Double, axis: double3) -> double4x4 {
+public func rotate(_ m: double4x4, angle: Double, axis: double3) -> double4x4 {
     
     let a = angle
     let c = cos(a)
@@ -92,8 +88,7 @@ public func rotate(m: double4x4, angle: Double, axis: double3) -> double4x4 {
 }
 
 /// Builds a scale 4 * 4 matrix created from 3 scalars.
-@warn_unused_result
-public func scale(m: float4x4, v: float3) -> float4x4 {
+public func scale(_ m: float4x4, v: float3) -> float4x4 {
     var Result = float4x4(0)
     Result[0] = m[0] * v[0];
     Result[1] = m[1] * v[1];
@@ -103,8 +98,7 @@ public func scale(m: float4x4, v: float3) -> float4x4 {
 }
 
 /// Builds a scale 4 * 4 matrix created from 3 scalars.
-@warn_unused_result
-public func scale(m: double4x4, v: double3) -> double4x4 {
+public func scale(_ m: double4x4, v: double3) -> double4x4 {
     var Result = double4x4(0)
     Result[0] = m[0] * v[0];
     Result[1] = m[1] * v[1];
@@ -114,8 +108,7 @@ public func scale(m: double4x4, v: double3) -> double4x4 {
 }
 
 /// Creates a matrix for an orthographic parallel viewing volume.
-@warn_unused_result
-public func ortho(left: Float, right: Float, bottom: Float, top: Float, zNear: Float, zFar: Float) -> float4x4 {
+public func ortho(_ left: Float, right: Float, bottom: Float, top: Float, zNear: Float, zFar: Float) -> float4x4 {
     var Result = float4x4(1)
     Result[0][0] = Float(2) / (right - left)
     Result[1][1] = Float(2) / (top - bottom)
@@ -127,8 +120,7 @@ public func ortho(left: Float, right: Float, bottom: Float, top: Float, zNear: F
 }
 
 /// Creates a matrix for projecting two-dimensional coordinates onto the screen.
-@warn_unused_result
-public func ortho(left: Float, right: Float, bottom: Float, top: Float) -> float4x4 {
+public func ortho(_ left: Float, right: Float, bottom: Float, top: Float) -> float4x4 {
     var Result = float4x4(1)
     Result[0][0] = Float(2) / (right - left)
     Result[1][1] = Float(2) / (top - bottom)
@@ -139,8 +131,7 @@ public func ortho(left: Float, right: Float, bottom: Float, top: Float) -> float
 }
 
 /// Creates a matrix for an orthographic parallel viewing volume.
-@warn_unused_result
-public func ortho(left: Double, right: Double, bottom: Double, top: Double, zNear: Double, zFar: Double) -> double4x4 {
+public func ortho(_ left: Double, right: Double, bottom: Double, top: Double, zNear: Double, zFar: Double) -> double4x4 {
     var Result = double4x4(1)
     Result[0][0] = Double(2) / (right - left)
     Result[1][1] = Double(2) / (top - bottom)
@@ -152,8 +143,7 @@ public func ortho(left: Double, right: Double, bottom: Double, top: Double, zNea
 }
 
 /// Creates a matrix for projecting two-dimensional coordinates onto the screen.
-@warn_unused_result
-public func ortho(left: Double, right: Double, bottom: Double, top: Double) -> double4x4 {
+public func ortho(_ left: Double, right: Double, bottom: Double, top: Double) -> double4x4 {
     var Result = double4x4(1)
     Result[0][0] = Double(2) / (right - left)
     Result[1][1] = Double(2) / (top - bottom)
@@ -164,8 +154,7 @@ public func ortho(left: Double, right: Double, bottom: Double, top: Double) -> d
 }
 
 /// Creates a frustum matrix.
-@warn_unused_result
-public func frustum(left: Float, right: Float, bottom: Float, top: Float, near: Float, far: Float) -> float4x4 {
+public func frustum(_ left: Float, right: Float, bottom: Float, top: Float, near: Float, far: Float) -> float4x4 {
     var Result = float4x4(0)
     Result[0][0] = (Float(2) * near) / (right - left)
     Result[1][1] = (Float(2) * near) / (top - bottom)
@@ -178,8 +167,7 @@ public func frustum(left: Float, right: Float, bottom: Float, top: Float, near: 
 }
 
 /// Creates a frustum matrix.
-@warn_unused_result
-public func frustum(left: Double, right: Double, bottom: Double, top: Double, near: Double, far: Double) -> double4x4 {
+public func frustum(_ left: Double, right: Double, bottom: Double, top: Double, near: Double, far: Double) -> double4x4 {
     var Result = double4x4(0)
     Result[0][0] = (Double(2) * near) / (right - left)
     Result[1][1] = (Double(2) * near) / (top - bottom)
@@ -192,8 +180,7 @@ public func frustum(left: Double, right: Double, bottom: Double, top: Double, ne
 }
 
 /// Creates a matrix for a symetric perspective-view.
-@warn_unused_result
-public func perspective(fovy: Float, aspect: Float, zNear: Float, zFar: Float) -> float4x4 {
+public func perspective(_ fovy: Float, aspect: Float, zNear: Float, zFar: Float) -> float4x4 {
     
     assert(abs(aspect) > Float(0), "")
     
@@ -209,8 +196,7 @@ public func perspective(fovy: Float, aspect: Float, zNear: Float, zFar: Float) -
 }
 
 /// Creates a matrix for a symetric perspective-view.
-@warn_unused_result
-public func perspective(fovy: Double, aspect: Double, zNear: Double, zFar: Double) -> double4x4 {
+public func perspective(_ fovy: Double, aspect: Double, zNear: Double, zFar: Double) -> double4x4 {
     
     assert(abs(aspect) > Double(0), "")
     
@@ -226,8 +212,7 @@ public func perspective(fovy: Double, aspect: Double, zNear: Double, zFar: Doubl
 }
 
 /// Builds a perspective projection matrix based on a field of view.
-@warn_unused_result
-public func perspectiveFov(fov: Float, width: Float, height: Float, zNear: Float, zFar: Float) -> float4x4 {
+public func perspectiveFov(_ fov: Float, width: Float, height: Float, zNear: Float, zFar: Float) -> float4x4 {
     assert(width > Float(0))
     assert(height > Float(0))
     assert(fov > Float(0))
@@ -246,8 +231,7 @@ public func perspectiveFov(fov: Float, width: Float, height: Float, zNear: Float
 }
 
 /// Builds a perspective projection matrix based on a field of view.
-@warn_unused_result
-public func perspectiveFov(fov: Double, width: Double, height: Double, zNear: Double, zFar: Double) -> double4x4 {
+public func perspectiveFov(_ fov: Double, width: Double, height: Double, zNear: Double, zFar: Double) -> double4x4 {
     assert(width > Double(0))
     assert(height > Double(0))
     assert(fov > Double(0))
@@ -266,8 +250,7 @@ public func perspectiveFov(fov: Double, width: Double, height: Double, zNear: Do
 }
 
 /// Creates a matrix for a symmetric perspective-view frustum with far plane at infinite.
-@warn_unused_result
-public func infinitePerspective(fovy : Float, aspect: Float, zNear : Float) -> float4x4 {
+public func infinitePerspective(_ fovy : Float, aspect: Float, zNear : Float) -> float4x4 {
     let range = tan(fovy / Float(2)) * zNear;
     let left = -range * aspect;
     let right = range * aspect;
@@ -284,8 +267,7 @@ public func infinitePerspective(fovy : Float, aspect: Float, zNear : Float) -> f
 }
 
 /// Creates a matrix for a symmetric perspective-view frustum with far plane at infinite.
-@warn_unused_result
-public func infinitePerspective(fovy : Double, aspect: Double, zNear : Double) -> double4x4 {
+public func infinitePerspective(_ fovy : Double, aspect: Double, zNear : Double) -> double4x4 {
     let range = tan(fovy / Double(2)) * zNear;
     let left = -range * aspect;
     let right = range * aspect;
@@ -302,8 +284,7 @@ public func infinitePerspective(fovy : Double, aspect: Double, zNear : Double) -
 }
 
 /// Build a look at view matrix.
-@warn_unused_result
-public func lookAt(eye: float3, center: float3, up: float3) -> float4x4 {
+public func lookAt(_ eye: float3, center: float3, up: float3) -> float4x4 {
     
     let f = normalize(center - eye);
     let s = normalize(cross(f, up));
@@ -326,8 +307,7 @@ public func lookAt(eye: float3, center: float3, up: float3) -> float4x4 {
 }
 
 /// Build a look at view matrix.
-@warn_unused_result
-public func lookAt(eye: double3, center: double3, up: double3) -> double4x4 {
+public func lookAt(_ eye: double3, center: double3, up: double3) -> double4x4 {
     
     let f = normalize(center - eye);
     let s = normalize(cross(f, up));
