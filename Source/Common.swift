@@ -351,68 +351,6 @@ public func fma(_ a: double4, b: double4, c: double4) -> double4 {
     return double4(fma(a[0], b[0], c[0]), fma(a[1], b[1], c[1]), fma(a[2], b[2], c[2]), fma(a[3], b[3], c[3]))
 }
 
-// MARK: - frexp
-
-/// Splits x into a floating-point significand in the range
-/// [0.5, 1.0) and an integral exponent of two, such that:
-/// x = significand * exp(2, exponent)
-public func frexp(_ x: float2) -> (float2, int2) {
-    let f1 = frexp(x[0])
-    let f2 = frexp(x[1])
-    return (float2(f1.0, f2.0), int2(Int32(f1.1), Int32(f2.1)))
-}
-
-/// Splits x into a floating-point significand in the range
-/// [0.5, 1.0) and an integral exponent of two, such that:
-/// x = significand * exp(2, exponent)
-public func frexp(_ x: float3) -> (float3, int3) {
-    let f1 = frexp(x[0])
-    let f2 = frexp(x[1])
-    let f3 = frexp(x[2])
-    return (float3(f1.0, f2.0, f3.0), int3(Int32(f1.1), Int32(f2.1), Int32(f3.1)))
-}
-
-/// Splits x into a floating-point significand in the range
-/// [0.5, 1.0) and an integral exponent of two, such that:
-/// x = significand * exp(2, exponent)
-public func frexp(_ x: float4) -> (float4, int4) {
-    let f1 = frexp(x[0])
-    let f2 = frexp(x[1])
-    let f3 = frexp(x[2])
-    let f4 = frexp(x[3])
-    return (float4(f1.0, f2.0, f3.0, f4.0), int4(Int32(f1.1), Int32(f2.1), Int32(f3.1), Int32(f4.1)))
-}
-
-/// Splits x into a floating-point significand in the range
-/// [0.5, 1.0) and an integral exponent of two, such that:
-/// x = significand * exp(2, exponent)
-public func frexp(_ x: double2) -> (double2, int2) {
-    let f1 = frexp(x[0])
-    let f2 = frexp(x[1])
-    return (double2(f1.0, f2.0), int2(Int32(f1.1), Int32(f2.1)))
-}
-
-/// Splits x into a floating-point significand in the range
-/// [0.5, 1.0) and an integral exponent of two, such that:
-/// x = significand * exp(2, exponent)
-public func frexp(_ x: double3) -> (double3, int3) {
-    let f1 = frexp(x[0])
-    let f2 = frexp(x[1])
-    let f3 = frexp(x[2])
-    return (double3(f1.0, f2.0, f3.0), int3(Int32(f1.1), Int32(f2.1), Int32(f3.1)))
-}
-
-/// Splits x into a floating-point significand in the range
-/// [0.5, 1.0) and an integral exponent of two, such that:
-/// x = significand * exp(2, exponent)
-public func frexp(_ x: double4) -> (double4, int4) {
-    let f1 = frexp(x[0])
-    let f2 = frexp(x[1])
-    let f3 = frexp(x[2])
-    let f4 = frexp(x[3])
-    return (double4(f1.0, f2.0, f3.0, f4.0), int4(Int32(f1.1), Int32(f2.1), Int32(f3.1), Int32(f4.1)))
-}
-
 // MARK: - scalbn
 
 /// Builds a floating-point number from x and the

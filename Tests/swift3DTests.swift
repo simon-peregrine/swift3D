@@ -332,46 +332,6 @@ class swift_3D_testFma: XCTestCase {
     }
 }
 
-class swift_3D_testFrexp: XCTestCase {
-    
-    func testFrexpFloat2() {
-        let v = float2(1.5, 2.7)
-        let r = frexp(v)
-        XCTAssert(glm_to_swift.frexp(v, withValFloat2: r.0, andExponent2: r.1))
-    }
-    
-    func testFrexpFloat3() {
-        let v = float3(1.5, 2.7, 1.0)
-        let r = frexp(v)
-        XCTAssert(glm_to_swift.frexp(v, withValFloat3: r.0, andExponent3: r.1))
-    }
-    
-    func testFrexpFloat4() {
-        let v = float4(1.5, 2.7, 1.0, -2.5)
-        let r = frexp(v)
-        XCTAssert(glm_to_swift.frexp(v, withValFloat4: r.0, andExponent4: r.1))
-    }
-    
-    func testFrexpDouble2() {
-        let v = double2(1.5, 2.7)
-        let r = frexp(v)
-        XCTAssert(glm_to_swift.frexp(v, withValDouble2: r.0, andExponent2: r.1))
-    }
-    
-    func testFrexpDouble3() {
-        let v = double3(1.5, 2.7, 1.0)
-        let r = frexp(v)
-        XCTAssert(glm_to_swift.frexp(v, withValDouble3: r.0, andExponent3: r.1))
-    }
-    
-    func testFrexpDouble4() {
-        let v = double4(1.5, 2.7, 1.0, -2.5)
-        let r = frexp(v)
-        XCTAssert(glm_to_swift.frexp(v, withValDouble4: r.0, andExponent4: r.1))
-    }
-    
-}
-
 class swift_3D_testPow: XCTestCase {
     
     func testPowFloat2() {

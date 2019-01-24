@@ -404,68 +404,6 @@ BOOL isEqual(const double& v1, const double& v2, double eps) {
     return isEqual(glm::fma(glmA, glmB, glmC), glmResult, 0.00000001);
 }
 
-#pragma mark - frexp
-
-+ (BOOL) frexp: (vector_float2) value withValFloat2:(vector_float2) val andExponent2: (vector_int2) exp {
-    glm::vec2 glmValue = castVector<glm::vec2>(value, 2);
-    glm::vec2 glmVal = castVector<glm::vec2>(val, 2);
-    glm::ivec2 glmExp = castVector<glm::ivec2>(exp, 2);
-    glm::ivec2 glmResExp;
-    glm::vec2 glmResVal = glm::frexp(glmValue, glmResExp);
-    
-    return glmResExp == glmExp && isEqual(glmResVal, glmVal, 0.00000001f);
-}
-
-+ (BOOL) frexp: (vector_float3) value withValFloat3:(vector_float3) val andExponent3: (vector_int3) exp {
-    glm::vec3 glmValue = castVector<glm::vec3>(value, 3);
-    glm::vec3 glmVal = castVector<glm::vec3>(val, 3);
-    glm::ivec3 glmExp = castVector<glm::ivec3>(exp, 3);
-    glm::ivec3 glmResExp;
-    glm::vec3 glmResVal = glm::frexp(glmValue, glmResExp);
-    
-    return glmResExp == glmExp && isEqual(glmResVal, glmVal, 0.00000001f);
-}
-
-+ (BOOL) frexp: (vector_float4) value withValFloat4:(vector_float4) val andExponent4: (vector_int4) exp {
-    glm::vec4 glmValue = castVector<glm::vec4>(value, 4);
-    glm::vec4 glmVal = castVector<glm::vec4>(val, 4);
-    glm::ivec4 glmExp = castVector<glm::ivec4>(exp, 4);
-    glm::ivec4 glmResExp;
-    glm::vec4 glmResVal = glm::frexp(glmValue, glmResExp);
-    
-    return glmResExp == glmExp && isEqual(glmResVal, glmVal, 0.00000001f);
-}
-
-+ (BOOL) frexp: (vector_double2) value withValDouble2:(vector_double2) val andExponent2: (vector_int2) exp {
-    glm::dvec2 glmValue = castVector<glm::dvec2>(value, 2);
-    glm::dvec2 glmVal = castVector<glm::dvec2>(val, 2);
-    glm::ivec2 glmExp = castVector<glm::ivec2>(exp, 2);
-    glm::ivec2 glmResExp;
-    glm::dvec2 glmResVal = glm::frexp(glmValue, glmResExp);
-    
-    return glmResExp == glmExp && isEqual(glmResVal, glmVal, 0.00000001);
-}
-
-+ (BOOL) frexp: (vector_double3) value withValDouble3:(vector_double3) val andExponent3: (vector_int3) exp {
-    glm::dvec3 glmValue = castVector<glm::dvec3>(value, 3);
-    glm::dvec3 glmVal = castVector<glm::dvec3>(val, 3);
-    glm::ivec3 glmExp = castVector<glm::ivec3>(exp, 3);
-    glm::ivec3 glmResExp;
-    glm::dvec3 glmResVal = glm::frexp(glmValue, glmResExp);
-    
-    return glmResExp == glmExp && isEqual(glmResVal, glmVal, 0.00000001);
-}
-
-+ (BOOL) frexp: (vector_double4) value withValDouble4:(vector_double4) val andExponent4: (vector_int4) exp {
-    glm::dvec4 glmValue = castVector<glm::dvec4>(value, 4);
-    glm::dvec4 glmVal = castVector<glm::dvec4>(val, 4);
-    glm::ivec4 glmExp = castVector<glm::ivec4>(exp, 4);
-    glm::ivec4 glmResExp;
-    glm::dvec4 glmResVal = glm::frexp(glmValue, glmResExp);
-    
-    return glmResExp == glmExp && isEqual(glmResVal, glmVal, 0.00000001);
-}
-
 #pragma mark - pow
 
 +(BOOL) pow:(vector_float2) base withPowerFloat2:(vector_float2) exp andResult:(vector_float2) result {
@@ -978,7 +916,7 @@ BOOL isEqual(const double& v1, const double& v2, double eps) {
     glm::mat4 glmM = castMatrix<glm::mat4>(m, 4);
     glm::vec3 glmAxis = castVector<glm::vec3>(axis, 3);
     glm::mat4 glmResult = castMatrix<glm::mat4>(result, 4);
-    return isEqualMatrix(glmResult, glm::rotate(glmM, angle, glmAxis),  0.00000001f);
+    return isEqualMatrix(glmResult, glm::rotate(glmM, angle, glmAxis),  0.000001f);
 }
 
 +(BOOL) rotateDouble:(matrix_double4x4)m withAngle:(double) angle withAxis:(vector_double3) axis andResult:(matrix_double4x4) result {
@@ -1073,7 +1011,7 @@ BOOL isEqual(const double& v1, const double& v2, double eps) {
     glm::vec3 glmCenter = castVector<glm::vec3>(center, 3);
     glm::vec3 glmUp = castVector<glm::vec3>(up, 3);
     glm::mat4 glmResult = castMatrix<glm::mat4>(result, 4);
-    return isEqualMatrix(glmResult, glm::lookAt(glmEye, glmCenter, glmUp), 0.00000001f);
+    return isEqualMatrix(glmResult, glm::lookAt(glmEye, glmCenter, glmUp), 0.000001f);
 }
 
 +(BOOL) lookAtDouble:(vector_double3) eye withCenter:(vector_double3) center withUp:(vector_double3) up andResult:(matrix_double4x4) result {

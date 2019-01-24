@@ -67,13 +67,6 @@
 + (BOOL) fmaDouble3a: (vector_double3) a andDouble3b: (vector_double3) b andDouble3c: (vector_double3) c withResultDouble3: (vector_double3) result;
 + (BOOL) fmaDouble4a: (vector_double4) a andDouble4b: (vector_double4) b andDouble4c: (vector_double4) c withResultDouble4: (vector_double4) result;
 
-+ (BOOL) frexp: (vector_float2) value withValFloat2:(vector_float2) val andExponent2: (vector_int2) exp;
-+ (BOOL) frexp: (vector_float3) value withValFloat3:(vector_float3) val andExponent3: (vector_int3) exp;
-+ (BOOL) frexp: (vector_float4) value withValFloat4:(vector_float4) val andExponent4: (vector_int4) exp;
-+ (BOOL) frexp: (vector_double2) value withValDouble2:(vector_double2) val andExponent2: (vector_int2) exp;
-+ (BOOL) frexp: (vector_double3) value withValDouble3:(vector_double3) val andExponent3: (vector_int3) exp;
-+ (BOOL) frexp: (vector_double4) value withValDouble4:(vector_double4) val andExponent4: (vector_int4) exp;
-
 +(BOOL) pow:(vector_float2) base withPowerFloat2:(vector_float2) exp andResult:(vector_float2) result;
 +(BOOL) pow:(vector_float3) base withPowerFloat3:(vector_float3) exp andResult:(vector_float3) result;
 +(BOOL) pow:(vector_float4) base withPowerFloat4:(vector_float4) exp andResult:(vector_float4) result;
